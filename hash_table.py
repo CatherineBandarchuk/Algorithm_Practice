@@ -112,3 +112,43 @@ def is_palindrome_permutation(my_string):
 # Testing 
 print(is_palindrome_permutation("racecac"))
 
+##############################################################################
+def calc_type_time(keyboard_list, word):
+    type_time = 0
+    letter_dict = {}
+    for letter, index in keyboard_list:
+        letter_dict[letter] = index
+    
+    start_index = letter_dict[word[0]]
+    for letter in word:
+        type_time += word
+        start_index = letter_dict[letter]
+
+
+## In the class ##
+def typing_time(layout, word):
+    typed_time = 0
+    location = 0
+    positions = {letter: pos for pos, letter in enumerate(layout)}
+    
+    for letter in word:
+        next_location = positions[letter]
+        typed_time +=abs(next_location - location)
+        location = next_location
+
+    return typed_time
+
+#################################################################################
+
+#helper function mapping the sentence:
+
+def map_sentence(sentence):
+    mapped = {}
+    for word in sentence.split(" "):
+        count = mapped.get(word, 0)
+        mapped[word] = count + 1
+    return mapped
+
+def two_sentences(one, two):
+    mapped_words = map_sentence(" ".join([one, two]))
+    return [wrd for wrd,count in mapped_words.items() if count ==1]
