@@ -35,7 +35,7 @@ def tally_mark_counter(tallies):
     
     if tallies <= 0:
         raise Exception("Please enter positive number bigger then 0.") 
- 
+
     cluster = tallies // 5
     remainder = tallies % 5
 
